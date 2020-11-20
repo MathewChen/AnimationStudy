@@ -10,6 +10,7 @@
 #import "XMDragVC.h"
 #import "MXCellMoveVC.h"
 #import "MXCalenderVC.h"
+#import "AipGeneralVC.h"
 
 @interface XMDemoListVC ()
 
@@ -20,7 +21,7 @@
 - (void)initDataSource {
     self.dataSource = [[QMUIOrderedDictionary alloc] initWithKeysAndObjects:
                        @"上下拖拽View", UIImageMake(@"icon_tabbar_uikit_selected"),@"cell移动", UIImageMake(@"icon_grid_theme"),
-                       @"日历界面", UIImageMake(@"edit_icon_brush"),
+                       @"日历界面", UIImageMake(@"edit_icon_brush"),@"扫码界面", UIImageMake(@"edit_icon_brush"),
                        nil];
 }
 
@@ -39,6 +40,8 @@
         viewController = [[MXCellMoveVC alloc] init];
     } else if([title isEqualToString:@"日历界面"]) {
         viewController = [[MXCalenderVC alloc] init];
+    } else if([title isEqualToString:@"扫码界面"]) {
+        viewController = [[AipGeneralVC alloc] init];
     }
 
     viewController.title = title;

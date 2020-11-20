@@ -6,9 +6,9 @@
 //  Copyright © 2017年 Baidu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MXCommonViewController.h"
 
-@interface AipGeneralVC : UIViewController
+@interface AipGeneralVC : MXCommonViewController
 
 
 @property (nonatomic, copy) void (^handler)(UIImage *);
