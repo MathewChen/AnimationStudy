@@ -27,10 +27,8 @@
     [self.view addSubview:showButton];
     [showButton addTarget:self action:@selector(showTuyaView) forControlEvents:UIControlEventTouchUpInside];
     
-//    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 150, 375 / 2.00, 256 / 2.00)];
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, showButton.sh_bottom, 375, 256)];
     [self.view addSubview:self.imageView];
-//    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
 }
 

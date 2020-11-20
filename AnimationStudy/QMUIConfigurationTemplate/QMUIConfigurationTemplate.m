@@ -287,11 +287,8 @@ static UIImage *disclosureIndicatorImageDark;
     return UIColorMake(238, 239, 241);
 }
 
-//- (UIColor *)themeTintColor {
-//    return UIColorTheme6;
-//}
 - (UIColor *)themeTintColor {
-    return UIColorMake(4, 151, 255);
+    return UIColorMake(18, 25, 50);
 }
 
 - (UIColor *)themeTitleTextColor {

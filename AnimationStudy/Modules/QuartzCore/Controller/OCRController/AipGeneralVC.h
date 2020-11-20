@@ -13,6 +13,5 @@
 
 @property (nonatomic, copy) void (^handler)(UIImage *);
 
-//+(UIViewController *)ViewControllerWithHandler:(void (^)(UIImage *image))handler;
 
 @end

@@ -18,7 +18,11 @@
 
 @interface UIColor (QDTheme)
 
+
+/// 背景色
 @property(class, nonatomic, strong, readonly) UIColor *qd_backgroundColor;
+
+/// 浅一点颜色的背景色
 @property(class, nonatomic, strong, readonly) UIColor *qd_backgroundColorLighten;
 @property(class, nonatomic, strong, readonly) UIColor *qd_backgroundColorHighlighted;
 @property(class, nonatomic, strong, readonly) UIColor *qd_tintColor;
