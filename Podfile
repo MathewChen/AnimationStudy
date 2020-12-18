@@ -38,4 +38,6 @@ source 'https://github.com/CocoaPods/Specs.git'
  pod 'QMUIKit'
  #日历
  pod 'FSCalendar'
+ #本地库
+ pod 'WCDB'
 end

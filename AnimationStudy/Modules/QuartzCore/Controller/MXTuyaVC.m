@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = UIColor.randomColor;
+    self.view.backgroundColor = UIColor.yellowColor;
     
     QMUIButton *showButton = [[QMUIButton alloc] initWithFrame:CGRectMake(16, TOP_HEIGHT, 100, 40)];
     showButton.backgroundColor = UIColor.qmui_randomColor;

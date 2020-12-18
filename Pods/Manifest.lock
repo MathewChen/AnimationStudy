@@ -355,6 +355,12 @@ PODS:
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - SQLiteRepairKit (1.2.2):
+    - WCDBOptimizedSQLCipher (~> 1.2.0)
+  - WCDB (1.0.7.5):
+    - SQLiteRepairKit (~> 1.2.0)
+    - WCDBOptimizedSQLCipher (~> 1.2.0)
+  - WCDBOptimizedSQLCipher (1.2.1)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -376,6 +382,7 @@ DEPENDENCIES:
   - ReactiveObjC (~> 3.1.1)
   - SDCycleScrollView (= 1.75)
   - SDWebImage (= 4.4.2)
+  - WCDB
   - YYKit
 
 SPEC REPOS:
@@ -396,6 +403,9 @@ SPEC REPOS:
     - ReactiveObjC
     - SDCycleScrollView
     - SDWebImage
+    - SQLiteRepairKit
+    - WCDB
+    - WCDBOptimizedSQLCipher
     - YYKit
 
 SPEC CHECKSUMS:
@@ -415,8 +425,11 @@ SPEC CHECKSUMS:
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
+  WCDB: 8e90babdeb7784c569353a4bd22a66c0a175a882
+  WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: c9cfc8fe8afc0e5bb47b1e589da37e942a594e53
+PODFILE CHECKSUM: 28e690b5045ea3d833fe6c9e480887bf1eee7393
 
 COCOAPODS: 1.9.3

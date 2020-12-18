@@ -10,6 +10,7 @@
 		28125C892524361C00E67991 /* DLVerticalDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28125C882524361C00E67991 /* DLVerticalDragView.m */; };
 		2813032524B8024B004D17A7 /* MXTuyaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2813032424B8024B004D17A7 /* MXTuyaVC.m */; };
 		283C8FD824487AD600D33331 /* 123456.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 283C8FD724487AD600D33331 /* 123456.jpg */; };
+		285136E6258B073800A38D79 /* MXFontOtfVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 285136E5258B073800A38D79 /* MXFontOtfVC.m */; };
 		285F32972445D8E000522F6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 285F32962445D8E000522F6F /* AppDelegate.m */; };
 		285F329D2445D8E000522F6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285F329C2445D8E000522F6F /* ViewController.m */; };
 		285F32A02445D8E000522F6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285F329E2445D8E000522F6F /* Main.storyboard */; };
@@ -80,6 +81,10 @@
 		28A7F03824C6DBEC005AE4C0 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7F03724C6DBEC005AE4C0 /* InjectionIIIHelper.m */; };
 		28A7F03B24C6F4E6005AE4C0 /* MXPrinterStatuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7F03A24C6F4E6005AE4C0 /* MXPrinterStatuVC.m */; };
 		28A7F04124C708DF005AE4C0 /* PrinterStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7F04024C708DF005AE4C0 /* PrinterStatusView.m */; };
+		28AF3CDE258349E5001E91F3 /* MXWCDBDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3CDD258349E5001E91F3 /* MXWCDBDemoVC.m */; };
+		28AF3CE525834F1E001E91F3 /* DLPurchasingModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3CE425834F1E001E91F3 /* DLPurchasingModel.mm */; };
+		28AF3CEE25834F7A001E91F3 /* DLPurchasingVerifyTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3CED25834F7A001E91F3 /* DLPurchasingVerifyTool.mm */; };
+		28AF3D1B25870150001E91F3 /* MXSendMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3D1A25870150001E91F3 /* MXSendMailVC.m */; };
 		28FBF8FC24B80B7D0069B8D5 /* CustomerBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBF8FB24B80B7D0069B8D5 /* CustomerBezierPath.m */; };
 		28FBF8FF24B815690069B8D5 /* BSBGraffitiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBF8FE24B815690069B8D5 /* BSBGraffitiView.m */; };
 		28FBF90324B818060069B8D5 /* HBDrawModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBF90124B818050069B8D5 /* HBDrawModel.m */; };
@@ -117,6 +122,9 @@
 		2813032324B8024B004D17A7 /* MXTuyaVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXTuyaVC.h; sourceTree = "<group>"; };
 		2813032424B8024B004D17A7 /* MXTuyaVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXTuyaVC.m; sourceTree = "<group>"; };
 		283C8FD724487AD600D33331 /* 123456.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 123456.jpg; sourceTree = "<group>"; };
+		285136E4258B073800A38D79 /* MXFontOtfVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXFontOtfVC.h; sourceTree = "<group>"; };
+		285136E5258B073800A38D79 /* MXFontOtfVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXFontOtfVC.m; sourceTree = "<group>"; };
+		285136EA258B07B400A38D79 /* NotoSansCJKsc-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKsc-Black.otf"; sourceTree = "<group>"; };
 		285F32922445D8E000522F6F /* AnimationStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		285F32952445D8E000522F6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		285F32962445D8E000522F6F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -256,6 +264,15 @@
 		28A7F03A24C6F4E6005AE4C0 /* MXPrinterStatuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXPrinterStatuVC.m; sourceTree = "<group>"; };
 		28A7F03F24C708DF005AE4C0 /* PrinterStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrinterStatusView.h; sourceTree = "<group>"; };
 		28A7F04024C708DF005AE4C0 /* PrinterStatusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrinterStatusView.m; sourceTree = "<group>"; };
+		28AF3CDC258349E5001E91F3 /* MXWCDBDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXWCDBDemoVC.h; sourceTree = "<group>"; };
+		28AF3CDD258349E5001E91F3 /* MXWCDBDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXWCDBDemoVC.m; sourceTree = "<group>"; };
+		28AF3CE325834F1E001E91F3 /* DLPurchasingModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLPurchasingModel.h; sourceTree = "<group>"; };
+		28AF3CE425834F1E001E91F3 /* DLPurchasingModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DLPurchasingModel.mm; sourceTree = "<group>"; };
+		28AF3CEC25834F7A001E91F3 /* DLPurchasingVerifyTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLPurchasingVerifyTool.h; sourceTree = "<group>"; };
+		28AF3CED25834F7A001E91F3 /* DLPurchasingVerifyTool.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DLPurchasingVerifyTool.mm; sourceTree = "<group>"; };
+		28AF3D0E2583646C001E91F3 /* DLPurchasingModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLPurchasingModel+WCTTableCoding.h"; sourceTree = "<group>"; };
+		28AF3D1925870150001E91F3 /* MXSendMailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXSendMailVC.h; sourceTree = "<group>"; };
+		28AF3D1A25870150001E91F3 /* MXSendMailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXSendMailVC.m; sourceTree = "<group>"; };
 		28FBF8FA24B80B7D0069B8D5 /* CustomerBezierPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerBezierPath.h; sourceTree = "<group>"; };
 		28FBF8FB24B80B7D0069B8D5 /* CustomerBezierPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerBezierPath.m; sourceTree = "<group>"; };
 		28FBF8FD24B815690069B8D5 /* BSBGraffitiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSBGraffitiView.h; sourceTree = "<group>"; };
@@ -460,6 +477,7 @@
 		28872C9F24C7D6C100CD6D1B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				285136EA258B07B400A38D79 /* NotoSansCJKsc-Black.otf */,
 				283C8FD724487AD600D33331 /* 123456.jpg */,
 				28847A7C24891880003A0D80 /* 111.jpg */,
 				28847A7B2489187F003A0D80 /* 222.jpg */,
@@ -534,6 +552,10 @@
 				289926E5255280740026765D /* MXCellMoveVC.m */,
 				289926E825529AE20026765D /* MXCalenderVC.h */,
 				289926E925529AE20026765D /* MXCalenderVC.m */,
+				28AF3D1925870150001E91F3 /* MXSendMailVC.h */,
+				28AF3D1A25870150001E91F3 /* MXSendMailVC.m */,
+				285136E4258B073800A38D79 /* MXFontOtfVC.h */,
+				285136E5258B073800A38D79 /* MXFontOtfVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -603,6 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				289C990F247BCBAD0093A5AD /* Controller */,
+				28AF3CE225834B6D001E91F3 /* Model */,
 			);
 			path = SQLite;
 			sourceTree = "<group>";
@@ -612,6 +635,8 @@
 			children = (
 				289C991F247BCDEB0093A5AD /* MXSQLiteMainVC.h */,
 				289C9920247BCDEB0093A5AD /* MXSQLiteMainVC.m */,
+				28AF3CDC258349E5001E91F3 /* MXWCDBDemoVC.h */,
+				28AF3CDD258349E5001E91F3 /* MXWCDBDemoVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -675,6 +700,18 @@
 				28A7F04024C708DF005AE4C0 /* PrinterStatusView.m */,
 			);
 			path = PrinterStatusViews;
+			sourceTree = "<group>";
+		};
+		28AF3CE225834B6D001E91F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				28AF3CEC25834F7A001E91F3 /* DLPurchasingVerifyTool.h */,
+				28AF3CED25834F7A001E91F3 /* DLPurchasingVerifyTool.mm */,
+				28AF3CE325834F1E001E91F3 /* DLPurchasingModel.h */,
+				28AF3CE425834F1E001E91F3 /* DLPurchasingModel.mm */,
+				28AF3D0E2583646C001E91F3 /* DLPurchasingModel+WCTTableCoding.h */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		28FBF8F924B80B6F0069B8D5 /* Other */ = {
@@ -896,9 +933,11 @@
 				2879E33F2480BE1700AEFE35 /* QMUIConfigurationTemplateDark.m in Sources */,
 				289C9925247BE89B0093A5AD /* MXUIHelper.m in Sources */,
 				2879E33E2480BE1700AEFE35 /* QMUIConfigurationTemplatePinkRose.m in Sources */,
+				28AF3CEE25834F7A001E91F3 /* DLPurchasingVerifyTool.mm in Sources */,
 				285F32FF2445D9A500522F6F /* UIAlertController+Blocks.m in Sources */,
 				28FBF90924B8186E0069B8D5 /* HBDrawCommon.m in Sources */,
 				285F33172445D9A500522F6F /* UIButton+SendCaptcha.m in Sources */,
+				28AF3CDE258349E5001E91F3 /* MXWCDBDemoVC.m in Sources */,
 				289C991E247BCDD30093A5AD /* MXQuartzCoreMainVC.m in Sources */,
 				28FBF90624B8184A0069B8D5 /* HBDrawPoint.m in Sources */,
 				285F330D2445D9A500522F6F /* UIColor+Extension.m in Sources */,
@@ -917,6 +956,7 @@
 				28FBF90324B818060069B8D5 /* HBDrawModel.m in Sources */,
 				285F33032445D9A500522F6F /* UITextField+Extension.m in Sources */,
 				289C9929247CA6D90093A5AD /* QMUIConfigurationTemplate.m in Sources */,
+				28AF3D1B25870150001E91F3 /* MXSendMailVC.m in Sources */,
 				289AA8FE2530037800792A61 /* DLFillPrintListView.m in Sources */,
 				28968E9525231DDD005800C4 /* MXVerticalDragView.m in Sources */,
 				285F32972445D8E000522F6F /* AppDelegate.m in Sources */,
@@ -931,6 +971,7 @@
 				28FBF8FF24B815690069B8D5 /* BSBGraffitiView.m in Sources */,
 				28125C892524361C00E67991 /* DLVerticalDragView.m in Sources */,
 				285F33182445D9A500522F6F /* UIView+Toast.m in Sources */,
+				28AF3CE525834F1E001E91F3 /* DLPurchasingModel.mm in Sources */,
 				285F33072445D9A500522F6F /* UIImage+Extension.m in Sources */,
 				289C9921247BCDEB0093A5AD /* MXSQLiteMainVC.m in Sources */,
 				285F330B2445D9A500522F6F /* NSDate+Extension.m in Sources */,
@@ -954,6 +995,7 @@
 				28A7F03B24C6F4E6005AE4C0 /* MXPrinterStatuVC.m in Sources */,
 				285F330A2445D9A500522F6F /* UIViewController+DLCategory.m in Sources */,
 				285F33052445D9A500522F6F /* UIImageView+Factory.m in Sources */,
+				285136E6258B073800A38D79 /* MXFontOtfVC.m in Sources */,
 				28847A83248FAAC1003A0D80 /* MXCommonGridViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,8 @@
 #import "MXCellMoveVC.h"
 #import "MXCalenderVC.h"
 #import "AipGeneralVC.h"
+#import "MXSendMailVC.h"
+#import "MXFontOtfVC.h"
 
 @interface XMDemoListVC ()
 
@@ -21,7 +23,7 @@
 - (void)initDataSource {
     self.dataSource = [[QMUIOrderedDictionary alloc] initWithKeysAndObjects:
                        @"上下拖拽View", UIImageMake(@"icon_tabbar_uikit_selected"),@"cell移动", UIImageMake(@"icon_grid_theme"),
-                       @"日历界面", UIImageMake(@"edit_icon_brush"),@"扫码界面", UIImageMake(@"edit_icon_brush"),
+                       @"日历界面", UIImageMake(@"edit_icon_brush"),@"扫码界面", UIImageMake(@"edit_icon_brush"),@"发送邮件", UIImageMake(@"icon_grid_console"),@"字体测试", UIImageMake(@"icon_grid_collection"),
                        nil];
 }
 
@@ -42,6 +44,10 @@
         viewController = [[MXCalenderVC alloc] init];
     } else if([title isEqualToString:@"扫码界面"]) {
         viewController = [[AipGeneralVC alloc] init];
+    } else if([title isEqualToString:@"发送邮件"]) {
+        viewController = [[MXSendMailVC alloc] init];
+    } else if([title isEqualToString:@"字体测试"]) {
+        viewController = [[MXFontOtfVC alloc] init];
     }
 
     viewController.title = title;

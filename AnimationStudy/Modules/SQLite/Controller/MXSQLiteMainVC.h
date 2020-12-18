@@ -6,11 +6,11 @@
 //  Copyright © 2020 dudian. All rights reserved.
 //
 
-#import "MXCommonViewController.h"
+#import "MXCommonGridViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MXSQLiteMainVC : MXCommonViewController
+@interface MXSQLiteMainVC : MXCommonGridViewController
 
 @end
 
