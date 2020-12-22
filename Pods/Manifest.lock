@@ -364,6 +364,9 @@ PODS:
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
+  - ZXingObjC (3.6.5):
+    - ZXingObjC/All (= 3.6.5)
+  - ZXingObjC/All (3.6.5)
 
 DEPENDENCIES:
   - AFNetworking (= 4.0.1)
@@ -384,6 +387,7 @@ DEPENDENCIES:
   - SDWebImage (= 4.4.2)
   - WCDB
   - YYKit
+  - ZXingObjC
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -407,6 +411,7 @@ SPEC REPOS:
     - WCDB
     - WCDBOptimizedSQLCipher
     - YYKit
+    - ZXingObjC
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -429,7 +434,8 @@ SPEC CHECKSUMS:
   WCDB: 8e90babdeb7784c569353a4bd22a66c0a175a882
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+  ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 28e690b5045ea3d833fe6c9e480887bf1eee7393
+PODFILE CHECKSUM: 43de594afa5778fc70b99e90ff4e04469582ad10
 
 COCOAPODS: 1.9.3

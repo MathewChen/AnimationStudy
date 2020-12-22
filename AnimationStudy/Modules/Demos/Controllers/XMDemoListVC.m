@@ -13,6 +13,7 @@
 #import "AipGeneralVC.h"
 #import "MXSendMailVC.h"
 #import "MXFontOtfVC.h"
+#import "MXBarcodeDemoVC.h"
 
 @interface XMDemoListVC ()
 
@@ -23,7 +24,7 @@
 - (void)initDataSource {
     self.dataSource = [[QMUIOrderedDictionary alloc] initWithKeysAndObjects:
                        @"上下拖拽View", UIImageMake(@"icon_tabbar_uikit_selected"),@"cell移动", UIImageMake(@"icon_grid_theme"),
-                       @"日历界面", UIImageMake(@"edit_icon_brush"),@"扫码界面", UIImageMake(@"edit_icon_brush"),@"发送邮件", UIImageMake(@"icon_grid_console"),@"字体测试", UIImageMake(@"icon_grid_collection"),
+                       @"日历界面", UIImageMake(@"edit_icon_brush"),@"扫码界面", UIImageMake(@"edit_icon_brush"),@"发送邮件", UIImageMake(@"icon_grid_console"),@"字体测试", UIImageMake(@"icon_grid_collection"),@"条码测试", UIImageMake(@"icon_barcode_demo"),
                        nil];
 }
 
@@ -48,6 +49,8 @@
         viewController = [[MXSendMailVC alloc] init];
     } else if([title isEqualToString:@"字体测试"]) {
         viewController = [[MXFontOtfVC alloc] init];
+    } else if([title isEqualToString:@"条码测试"]) {
+        viewController = [[MXBarcodeDemoVC alloc] init];
     }
 
     viewController.title = title;

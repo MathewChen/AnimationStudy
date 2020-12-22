@@ -40,4 +40,6 @@ source 'https://github.com/CocoaPods/Specs.git'
  pod 'FSCalendar'
  #本地库
  pod 'WCDB'
+ #条码二维码
+ pod 'ZXingObjC'
 end
