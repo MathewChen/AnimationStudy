@@ -1175,7 +1175,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 32ADPZQBFS;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
-				GCC_PREFIX_HEADER = /Users/mingxing/Documents/AnimationStudy/AnimationStudy/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AnimationStudy/PrefixHeader.pch";
 				INFOPLIST_FILE = AnimationStudy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1238,7 +1238,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 32ADPZQBFS;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
-				GCC_PREFIX_HEADER = /Users/mingxing/Documents/AnimationStudy/AnimationStudy/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AnimationStudy/PrefixHeader.pch";
 				INFOPLIST_FILE = AnimationStudy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
