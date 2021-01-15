@@ -20,10 +20,6 @@
 
 #import "UIView+Frame.h"
 
-#import <QMUIKit.h>
-
-
-
 #import "UIView+Extension.h"
 #import "UIView+Cutting.h"
 #import "FunctionMacro.h"
@@ -33,7 +29,7 @@
 #import "Masonry.h"
 #import <SDWebImage/SDImageCache.h>
 
-//#import <QMUIKit/QMUIKit.h>
+#import <QMUIKit/QMUIKit.h>
 #import "MXUIHelper.h"
 
 #import "MXCommonUI.h"

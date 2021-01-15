@@ -85,6 +85,7 @@
 		28AF3CE525834F1E001E91F3 /* DLPurchasingModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3CE425834F1E001E91F3 /* DLPurchasingModel.mm */; };
 		28AF3CEE25834F7A001E91F3 /* DLPurchasingVerifyTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3CED25834F7A001E91F3 /* DLPurchasingVerifyTool.mm */; };
 		28AF3D1B25870150001E91F3 /* MXSendMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3D1A25870150001E91F3 /* MXSendMailVC.m */; };
+		28D0FE892599F47D00B3E8B1 /* UIAlertController+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D0FE882599F47D00B3E8B1 /* UIAlertController+Blocks.m */; };
 		28F1B252259055DD004EE495 /* MXBarcodeDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F1B251259055DD004EE495 /* MXBarcodeDemoVC.m */; };
 		28FBF8FC24B80B7D0069B8D5 /* CustomerBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBF8FB24B80B7D0069B8D5 /* CustomerBezierPath.m */; };
 		28FBF8FF24B815690069B8D5 /* BSBGraffitiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBF8FE24B815690069B8D5 /* BSBGraffitiView.m */; };
@@ -274,6 +275,8 @@
 		28AF3D0E2583646C001E91F3 /* DLPurchasingModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLPurchasingModel+WCTTableCoding.h"; sourceTree = "<group>"; };
 		28AF3D1925870150001E91F3 /* MXSendMailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXSendMailVC.h; sourceTree = "<group>"; };
 		28AF3D1A25870150001E91F3 /* MXSendMailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXSendMailVC.m; sourceTree = "<group>"; };
+		28D0FE872599F47C00B3E8B1 /* UIAlertController+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Blocks.h"; path = "../../../DLabel3.6.0/DLabel/Common/Category/UIAlertController+Blocks.h"; sourceTree = "<group>"; };
+		28D0FE882599F47D00B3E8B1 /* UIAlertController+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Blocks.m"; path = "../../../DLabel3.6.0/DLabel/Common/Category/UIAlertController+Blocks.m"; sourceTree = "<group>"; };
 		28F1B250259055DD004EE495 /* MXBarcodeDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXBarcodeDemoVC.h; sourceTree = "<group>"; };
 		28F1B251259055DD004EE495 /* MXBarcodeDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXBarcodeDemoVC.m; sourceTree = "<group>"; };
 		28FBF8FA24B80B7D0069B8D5 /* CustomerBezierPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerBezierPath.h; sourceTree = "<group>"; };
@@ -442,6 +445,7 @@
 				285F32DB2445D9A500522F6F /* NSString+Regex.h */,
 				285F32F42445D9A500522F6F /* NSString+Regex.m */,
 				285F32E62445D9A500522F6F /* UIAlertController+Blocks.h */,
+				28D0FE882599F47D00B3E8B1 /* UIAlertController+Blocks.m */,
 				285F32CB2445D9A500522F6F /* UIAlertController+Blocks.m */,
 				285F32F22445D9A500522F6F /* UIButton+EdgeInsets.h */,
 				285F32DD2445D9A500522F6F /* UIButton+EdgeInsets.m */,
@@ -473,6 +477,7 @@
 				285F32FE2445D9A500522F6F /* UIView+Toast.m */,
 				285F32F82445D9A500522F6F /* UIViewController+DLCategory.h */,
 				285F32E42445D9A500522F6F /* UIViewController+DLCategory.m */,
+				28D0FE872599F47C00B3E8B1 /* UIAlertController+Blocks.h */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -994,6 +999,7 @@
 				285F33092445D9A500522F6F /* UITableViewCell+Extension.m in Sources */,
 				288BF09424EFB10D002E3249 /* AipCameraController.m in Sources */,
 				289C9918247BCD920093A5AD /* MXCommonViewController.m in Sources */,
+				28D0FE892599F47D00B3E8B1 /* UIAlertController+Blocks.m in Sources */,
 				2879E2C7247E8B8300AEFE35 /* MXCommonUI.m in Sources */,
 				28968E90252316A7005800C4 /* XMDragVC.m in Sources */,
 				28FBF8FC24B80B7D0069B8D5 /* CustomerBezierPath.m in Sources */,

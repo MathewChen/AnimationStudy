@@ -10,7 +10,7 @@
 #import "MXVerticalDragView.h"
 #import "DLVerticalDragView.h"
 #import "DLFillPrintListView.h"
-@interface XMDragVC ()
+@interface XMDragVC ()<UINavigationControllerBackButtonHandlerProtocol>
 
 @end
 
@@ -45,5 +45,9 @@
     }];
 }
 
-
+- (BOOL)shouldPopViewControllerByBackButtonOrPopGesture:(BOOL)byPopGesture {
+    
+    return YES;
+    
+}
 @end
