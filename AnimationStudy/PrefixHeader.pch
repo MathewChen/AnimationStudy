@@ -35,4 +35,6 @@
 #import "MXCommonUI.h"
 
 #import "MXThemeManager.h"
+
+#import <YYKit/YYKit.h>
 #endif

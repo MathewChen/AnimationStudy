@@ -14,6 +14,8 @@
 #import "MXSendMailVC.h"
 #import "MXFontOtfVC.h"
 #import "MXBarcodeDemoVC.h"
+#import "MXYYTextTestVC.h"
+#import "MXTableViewTestVC.h"
 
 @interface XMDemoListVC ()
 
@@ -24,7 +26,7 @@
 - (void)initDataSource {
     self.dataSource = [[QMUIOrderedDictionary alloc] initWithKeysAndObjects:
                        @"上下拖拽View", UIImageMake(@"icon_tabbar_uikit_selected"),@"cell移动", UIImageMake(@"icon_grid_theme"),
-                       @"日历界面", UIImageMake(@"edit_icon_brush"),@"扫码界面", UIImageMake(@"edit_icon_brush"),@"发送邮件", UIImageMake(@"icon_grid_console"),@"字体测试", UIImageMake(@"icon_grid_collection"),@"条码测试", UIImageMake(@"icon_barcode_demo"),
+                       @"日历界面", UIImageMake(@"edit_icon_brush"),@"扫码界面", UIImageMake(@"edit_icon_brush"),@"发送邮件", UIImageMake(@"icon_grid_console"),@"字体测试", UIImageMake(@"icon_grid_collection"),@"条码测试", UIImageMake(@"icon_barcode_demo"),@"YYTest测试", UIImageMake(@"icon_YYLabel"),@"TableViewTest测试", UIImageMake(@"icon_list"),
                        nil];
 }
 
@@ -51,6 +53,12 @@
         viewController = [[MXFontOtfVC alloc] init];
     } else if([title isEqualToString:@"条码测试"]) {
         viewController = [[MXBarcodeDemoVC alloc] init];
+    } else if([title isEqualToString:@"条码测试"]) {
+        viewController = [[MXBarcodeDemoVC alloc] init];
+    } else if([title isEqualToString:@"YYTest测试"]) {
+        viewController = [[MXYYTextTestVC alloc] init];
+    } else if([title isEqualToString:@"TableViewTest测试"]) {
+        viewController = [[MXTableViewTestVC alloc] init];
     }
 
     viewController.title = title;

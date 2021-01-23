@@ -68,6 +68,8 @@
 		28968E90252316A7005800C4 /* XMDragVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28968E8F252316A7005800C4 /* XMDragVC.m */; };
 		28968E9525231DDD005800C4 /* MXVerticalDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28968E9425231DDD005800C4 /* MXVerticalDragView.m */; };
 		28968E9825241BB9005800C4 /* GenericPanGestureHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 28968E9625241BB8005800C4 /* GenericPanGestureHandler.m */; };
+		28979F8A25BA7A2800874846 /* MXYYTextTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28979F8925BA7A2800874846 /* MXYYTextTestVC.m */; };
+		28979F9025BACFB800874846 /* MXTableViewTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28979F8F25BACFB800874846 /* MXTableViewTestVC.m */; };
 		289926E6255280740026765D /* MXCellMoveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289926E5255280740026765D /* MXCellMoveVC.m */; };
 		289926EA25529AE20026765D /* MXCalenderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289926E925529AE20026765D /* MXCalenderVC.m */; };
 		289AA8FE2530037800792A61 /* DLFillPrintListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289AA8FD2530037800792A61 /* DLFillPrintListView.m */; };
@@ -240,6 +242,10 @@
 		28968E9425231DDD005800C4 /* MXVerticalDragView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXVerticalDragView.m; sourceTree = "<group>"; };
 		28968E9625241BB8005800C4 /* GenericPanGestureHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericPanGestureHandler.m; sourceTree = "<group>"; };
 		28968E9725241BB8005800C4 /* GenericPanGestureHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericPanGestureHandler.h; sourceTree = "<group>"; };
+		28979F8825BA7A2800874846 /* MXYYTextTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXYYTextTestVC.h; sourceTree = "<group>"; };
+		28979F8925BA7A2800874846 /* MXYYTextTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXYYTextTestVC.m; sourceTree = "<group>"; };
+		28979F8E25BACFB800874846 /* MXTableViewTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXTableViewTestVC.h; sourceTree = "<group>"; };
+		28979F8F25BACFB800874846 /* MXTableViewTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXTableViewTestVC.m; sourceTree = "<group>"; };
 		289926E4255280740026765D /* MXCellMoveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXCellMoveVC.h; sourceTree = "<group>"; };
 		289926E5255280740026765D /* MXCellMoveVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXCellMoveVC.m; sourceTree = "<group>"; };
 		289926E825529AE20026765D /* MXCalenderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXCalenderVC.h; sourceTree = "<group>"; };
@@ -566,6 +572,10 @@
 				285136E5258B073800A38D79 /* MXFontOtfVC.m */,
 				28F1B250259055DD004EE495 /* MXBarcodeDemoVC.h */,
 				28F1B251259055DD004EE495 /* MXBarcodeDemoVC.m */,
+				28979F8825BA7A2800874846 /* MXYYTextTestVC.h */,
+				28979F8925BA7A2800874846 /* MXYYTextTestVC.m */,
+				28979F8E25BACFB800874846 /* MXTableViewTestVC.h */,
+				28979F8F25BACFB800874846 /* MXTableViewTestVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -946,7 +956,9 @@
 				28AF3CEE25834F7A001E91F3 /* DLPurchasingVerifyTool.mm in Sources */,
 				285F32FF2445D9A500522F6F /* UIAlertController+Blocks.m in Sources */,
 				28FBF90924B8186E0069B8D5 /* HBDrawCommon.m in Sources */,
+				28979F8A25BA7A2800874846 /* MXYYTextTestVC.m in Sources */,
 				285F33172445D9A500522F6F /* UIButton+SendCaptcha.m in Sources */,
+				28979F9025BACFB800874846 /* MXTableViewTestVC.m in Sources */,
 				28AF3CDE258349E5001E91F3 /* MXWCDBDemoVC.m in Sources */,
 				289C991E247BCDD30093A5AD /* MXQuartzCoreMainVC.m in Sources */,
 				28FBF90624B8184A0069B8D5 /* HBDrawPoint.m in Sources */,
