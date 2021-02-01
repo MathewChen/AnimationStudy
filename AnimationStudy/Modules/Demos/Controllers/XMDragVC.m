@@ -12,6 +12,10 @@
 #import "DLFillPrintListView.h"
 @interface XMDragVC ()<UINavigationControllerBackButtonHandlerProtocol>
 
+@property(nonatomic, strong) DLFillPrintListView *dragView;
+
+@property(nonatomic, strong) UIView *redView;
+
 @end
 
 @implementation XMDragVC
@@ -34,12 +38,23 @@
     dragView.backgroundColor = UIColor.qmui_randomColor;
     dragView.dragViewTitle = @"标签";
     dragView.dragViewDesStr = @"(24)";
+    [dragView sizeToFit];
     [self.view addSubview:dragView];
+    self.dragView = dragView;
     
     UIView *redView = [[UIView alloc] init];
     [self.view addSubview:redView];
     redView.backgroundColor = UIColor.redColor;
-    [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [redView sizeToFit];
+    self.redView = redView;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+//    self.dragView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
+    [self.redView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
         make.height.equalTo(@50);
     }];
