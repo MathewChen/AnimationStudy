@@ -19,8 +19,10 @@
 #import "UIBarItem+QMUI.h"
 #import "UIImage+QMUI.h"
 #import "UIView+QMUI.h"
+#import "UINavigationController+QMUI.h"
 
 NSInteger const kLastTouchedTabBarItemIndexNone = -1;
+NSString *const kShouldCheckTabBarHiddenKey = @"kShouldCheckTabBarHiddenKey";
 
 @interface UITabBar ()
 
@@ -39,16 +41,29 @@ QMUISynthesizeNSIntegerProperty(tabBarItemViewTouchCount, setTabBarItemViewTouch
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        ExtendImplementationOfNonVoidMethodWithSingleArgument([UITabBar class], @selector(initWithFrame:), CGRect, UITabBar *, ^UITabBar *(UITabBar *selfObject, CGRect frame, UITabBar *originReturnValue) {
+        ExtendImplementationOfVoidMethodWithoutArguments([UITabBarController class], @selector(viewDidLoad), ^(UITabBarController *selfObject) {
             if (QMUICMIActivated) {
                 if (@available(iOS 13.0, *)) {
                     // iOS 13 不使用 tintColor 了，改为用 UITabBarAppearance，具体请看 QMUIConfiguration.m
                 } else {
-                    // UIView.tintColor 并不支持 UIAppearance 协议，所以不能通过 appearance 来设置，只能在实例里设置
-                    selfObject.tintColor = TabBarItemImageColorSelected;
+                    // 根据 TabBarContainerClasses 的值来决定是否设置 UITabBar.tintColor
+                    // UITabBar.tintColor 没有被添加 UI_APPEARANCE_SELECTOR 标记，所以没有采用 UIAppearance 的方式去实现（虽然它实际上是支持的）
+                    BOOL shouldSetTintColor = NO;
+                    if (TabBarContainerClasses.count) {
+                        for (Class class in TabBarContainerClasses) {
+                            if ([selfObject isKindOfClass:class]) {
+                                shouldSetTintColor = YES;
+                                break;
+                            }
+                        }
+                    } else {
+                        shouldSetTintColor = YES;
+                    }
+                    if (shouldSetTintColor) {
+                        selfObject.tabBar.tintColor = TabBarItemImageColorSelected;
+                    }
                 }
             }
-            return originReturnValue;
         });
         
         // iOS 12 及以下，如果 UITabBar backgroundImage 为 nil，则 tabBar 会显示磨砂背景，此时不管怎么修改 shadowImage 都无效，都会显示系统默认的分隔线，导致无法很好地统一不同 iOS 版本的表现（iOS 13 及以上没有这个限制），所以这里做了兼容。
@@ -68,17 +83,6 @@ QMUISynthesizeNSIntegerProperty(tabBarItemViewTouchCount, setTabBarItemViewTouch
         
         OverrideImplementation([UITabBar class], @selector(setItems:animated:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
             return ^void(UITabBar *selfObject, NSArray<UITabBarItem *> *items, BOOL animated) {
-                
-                // 应用配置表样式
-                [items enumerateObjectsUsingBlock:^(UITabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
-                    if (QMUICMIActivated) {
-                        if (@available(iOS 13.0, *)) {
-                            // iOS 13 通过 appearance 的方式修改，具体请查看 QMUIConfiguration.m
-                        } else {
-                            [item qmui_updateTintColorForiOS12AndEarlier:TabBarItemImageColor];
-                        }
-                    }
-                }];
                 
                 // call super
                 void (*originSelectorIMP)(id, SEL, NSArray<UITabBarItem *> *, BOOL);
@@ -140,20 +144,18 @@ QMUISynthesizeNSIntegerProperty(tabBarItemViewTouchCount, setTabBarItemViewTouch
         
         // 以下代码修复两个仅存在于 12.1.0 版本的系统 bug，实测 12.1.1 苹果已经修复
         if (@available(iOS 12.1, *)) {
-            
-            OverrideImplementation(NSClassFromString(@"UITabBarButton"), @selector(setFrame:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
-                return ^(UIView *selfObject, CGRect firstArgv) {
-                    
-                    // Fixed: UITabBar layout is broken on iOS 12.1
-                    // https://github.com/Tencent/QMUI_iOS/issues/410
-                    
-                    if (IOS_VERSION_NUMBER < 120101 || (QMUICMIActivated && ShouldFixTabBarButtonBugForAll)) {
+            if (@available(iOS 12.1.1, *)) {
+            } else {
+                OverrideImplementation(NSClassFromString(@"UITabBarButton"), @selector(setFrame:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
+                    return ^(UIView *selfObject, CGRect firstArgv) {
+                        
+                        // Fixed: UITabBar layout is broken on iOS 12.1
+                        // https://github.com/Tencent/QMUI_iOS/issues/410
+                        
                         if (!CGRectIsEmpty(selfObject.frame) && CGRectIsEmpty(firstArgv)) {
                             return;
                         }
-                    }
-                    
-                    if (IOS_VERSION_NUMBER < 120101) {
+                        
                         // Fixed: iOS 12.1 UITabBarItem positioning issue during swipe back gesture (when UINavigationBar is hidden)
                         // https://github.com/Tencent/QMUI_iOS/issues/422
                         if (IS_NOTCHED_SCREEN) {
@@ -161,39 +163,205 @@ QMUISynthesizeNSIntegerProperty(tabBarItemViewTouchCount, setTabBarItemViewTouch
                                 return;
                             }
                         }
+                        
+                        // call super
+                        void (*originSelectorIMP)(id, SEL, CGRect);
+                        originSelectorIMP = (void (*)(id, SEL, CGRect))originalIMPProvider();
+                        originSelectorIMP(selfObject, originCMD, firstArgv);
+                    };
+                });
+            }
+        }
+        
+        if (@available(iOS 13.0, *)) {
+        } else {
+            Class tabBarButtonLabelClass = NSClassFromString(@"UITabBarButtonLabel");
+            
+            UITabBarItem *(^tabBarItemOfLabelBlock)(UILabel *label) = ^UITabBarItem *(UILabel *label) {
+                UIControl *tabBarButton = [label qmui_valueForKey:@"_tabBarButton"];
+                UITabBar *tabBar = [tabBarButton qmui_valueForKey:@"tabBar"];
+                __block UITabBarItem *tabBarItem = nil;
+                if (!tabBar) {
+                    return nil;
+                }
+                [tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if (obj.qmui_view == tabBarButton) {
+                        tabBarItem = obj;
+                        *stop = YES;
+                    }
+                }];
+                return tabBarItem;
+            };
+            
+            // iOS 12，如果用 UIAppearance 的方式设置了 UITabBar.appearance.unselectedItemTintColor，此时不管以 appearance 方式修改 UITabBarItem titleTextAttributes 的 NSForegroundColorAttributeName，或是直接修改 UITabBarItem 实例，均会被 unselectedItemTintColor 覆盖，所以这里做个保护
+            OverrideImplementation(tabBarButtonLabelClass, NSSelectorFromString(@"_setUnselectedTintColor:"), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
+                return ^(UILabel *selfObject, UIColor *firstArgv) {
+                    
+                    UITabBarItem *item = tabBarItemOfLabelBlock(selfObject);
+                    if (item) {
+                        UITabBar *tabBar = [[selfObject qmui_valueForKey:@"_tabBarButton"] qmui_valueForKey:@"tabBar"];
+                        NSDictionary<NSAttributedStringKey,id> *normalAttributes = [item titleTextAttributesForState:UIControlStateNormal] ?: [UITabBarItem.qmui_appearanceConfigured titleTextAttributesForState:UIControlStateNormal];
+                        UIColor *normalColor = normalAttributes[NSForegroundColorAttributeName];
+                        UIColor *unselectedTintColor = tabBar.unselectedItemTintColor;
+                        if (normalColor && [unselectedTintColor isEqual:firstArgv] && ![normalColor isEqual:unselectedTintColor]) {
+                            return;
+                        }
                     }
                     
                     // call super
-                    void (*originSelectorIMP)(id, SEL, CGRect);
-                    originSelectorIMP = (void (*)(id, SEL, CGRect))originalIMPProvider();
+                    void (*originSelectorIMP)(id, SEL, UIColor *);
+                    originSelectorIMP = (void (*)(id, SEL, UIColor *))originalIMPProvider();
                     originSelectorIMP(selfObject, originCMD, firstArgv);
+                };
+            });
+            
+            // 修复系统在 iOS 12 及以下，通过 [UITabBarItem setTitleTextAttributes:forState:] 设置的 selected 字体无法生效的 bug（selected 的颜色是可以生效的）
+            OverrideImplementation(tabBarButtonLabelClass, @selector(setSelected:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
+                return ^(UILabel *selfObject, BOOL selected) {
+                    
+                    // call super
+                    void (*originSelectorIMP)(id, SEL, BOOL);
+                    originSelectorIMP = (void (*)(id, SEL, BOOL))originalIMPProvider();
+                    originSelectorIMP(selfObject, originCMD, selected);
+                    
+                    UITabBarItem *item = tabBarItemOfLabelBlock(selfObject);
+                    if (!item) {
+                        return;
+                    }
+                    
+                    NSDictionary<NSAttributedStringKey,id> *normalAttributes = [item titleTextAttributesForState:UIControlStateNormal] ?: [UITabBarItem.qmui_appearanceConfigured titleTextAttributesForState:UIControlStateNormal];
+                    NSDictionary<NSAttributedStringKey,id> *selectedAttributes = [item titleTextAttributesForState:UIControlStateSelected] ?: [UITabBarItem.qmui_appearanceConfigured titleTextAttributesForState:UIControlStateSelected];
+                    if (normalAttributes[NSFontAttributeName] && selectedAttributes[NSFontAttributeName]) {
+                        if (selected) {
+                            selfObject.font = selectedAttributes[NSFontAttributeName];
+                        } else {
+                            selfObject.font = normalAttributes[NSFontAttributeName];
+                        }
+                        [selfObject sizeToFit];
+                        [selfObject.superview setNeedsLayout];
+                    }
+                };
+            });   
+        }
+        
+        // iOS 13 下如果以 UITabBarAppearance 的方式将 UITabBarItem 的 font 大小设置为超过默认的 10，则会出现布局错误，文字被截断，所以这里做了个兼容
+        // iOS 14.0 测试过已不存在该问题
+        // https://github.com/Tencent/QMUI_iOS/issues/740
+        if (@available(iOS 13.0, *)) {
+            if (@available(iOS 14.0, *)) {
+            } else {
+                OverrideImplementation(NSClassFromString(@"UITabBarButtonLabel"), @selector(setAttributedText:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
+                    return ^(UILabel *selfObject, NSAttributedString *firstArgv) {
+                        
+                        // call super
+                        void (*originSelectorIMP)(id, SEL, NSAttributedString *);
+                        originSelectorIMP = (void (*)(id, SEL, NSAttributedString *))originalIMPProvider();
+                        originSelectorIMP(selfObject, originCMD, firstArgv);
+                        
+                        CGFloat fontSize = selfObject.font.pointSize;
+                        if (fontSize > 10) {
+                            [selfObject sizeToFit];
+                        }
+                    };
+                });
+            }
+        }
+        
+        // iOS 14 修改 UITabBarAppearance.inlineLayoutAppearance.normal.titleTextAttributes[NSForegroundColor] 会导致 UITabBarItem 文字无法完整展示
+        // https://github.com/Tencent/QMUI_iOS/issues/1110
+        if (@available(iOS 14.0, *)) {
+            OverrideImplementation(NSClassFromString(@"UITabBarButtonLabel"), @selector(sizeThatFits:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
+                return ^CGSize(UILabel *selfObject, CGSize firstArgv) {
+                    UIFont *font = selfObject.font;
+                    SEL selectorForCSSFontFamily = NSSelectorFromString(@"familyNameForCSSFontFamilyValueForWebKit:");
+                    if ([font respondsToSelector:selectorForCSSFontFamily]) {
+                        BOOL forWebKit = YES;
+                        NSString *fontFamily = [font qmui_performSelector:selectorForCSSFontFamily withArguments:&forWebKit, nil];
+                        if ([fontFamily containsString:@"UICTFontTextStyleFootnote"]) {
+                            static UILabel *standardLabel;
+                            if (!standardLabel) {
+                                standardLabel = [[UILabel alloc] init];
+                            }
+                            standardLabel.attributedText = selfObject.attributedText;
+                            CGSize result = [standardLabel sizeThatFits:firstArgv];
+                            return result;
+                        }
+                    }
+                    
+                    // call super
+                    CGSize (*originSelectorIMP)(id, SEL, CGSize);
+                    originSelectorIMP = (CGSize (*)(id, SEL, CGSize))originalIMPProvider();
+                    CGSize result = originSelectorIMP(selfObject, originCMD, firstArgv);
+                    return result;
                 };
             });
         }
         
-        // iOS 13 下如果以 UITabBarAppearance 的方式将 UITabBarItem 的 font 大小设置为超过默认的 10，则会出现布局错误，文字被截断，所以这里做了个兼容
-        // https://github.com/Tencent/QMUI_iOS/issues/740
-        if (@available(iOS 13.0, *)) {
-            OverrideImplementation(NSClassFromString(@"UITabBarButtonLabel"), @selector(setAttributedText:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
-                return ^(UILabel *selfObject, NSAttributedString *firstArgv) {
-                    
-                    // call super
-                    void (*originSelectorIMP)(id, SEL, NSAttributedString *);
-                    originSelectorIMP = (void (*)(id, SEL, NSAttributedString *))originalIMPProvider();
-                    originSelectorIMP(selfObject, originCMD, firstArgv);
-                    
-                    CGFloat fontSize = selfObject.font.pointSize;
-                    if (fontSize > 10) {
-                        [selfObject sizeToFit];
-                    }
-                };
-            });
+        // iOS 14.0 如果 pop 到一个 hidesBottomBarWhenPushed = NO 的 vc，tabBar 无法正确显示出来
+        // 根据测试，iOS 14.2 开始，系统已修复该问题
+        // https://github.com/Tencent/QMUI_iOS/issues/1100
+        if (@available(iOS 14.0, *)) {
+            if (@available(iOS 14.2, *)) {
+            } else {
+                OverrideImplementation([UINavigationController class], @selector(qmui_didInitialize), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
+                    return ^(UINavigationController *selfObject) {
+                        
+                        // call super
+                        void (*originSelectorIMP)(id, SEL);
+                        originSelectorIMP = (void (*)(id, SEL))originalIMPProvider();
+                        originSelectorIMP(selfObject, originCMD);
+                        
+                        [selfObject qmui_addNavigationActionDidChangeBlock:^(QMUINavigationAction action, BOOL animated, __kindof UINavigationController * _Nullable weakNavigationController, __kindof UIViewController * _Nullable appearingViewController, NSArray<__kindof UIViewController *> * _Nullable disappearingViewControllers) {
+                            switch (action) {
+                                case QMUINavigationActionWillPop:
+                                case QMUINavigationActionWillSet: {
+                                    // 系统的逻辑就是，在 push N 个 vc 的过程中，只要其中出现任意一个 vc.hidesBottomBarWhenPushed = YES，则 tabBar 不会再出现（不管后续有没有 vc.hidesBottomBarWhenPushed = NO），所以在 pop 回去的时候也要遵循这个规则
+                                    if (animated && weakNavigationController.tabBarController && !appearingViewController.hidesBottomBarWhenPushed) {
+                                        BOOL systemShouldHideTabBar = NO;
+                                        NSArray<UIViewController *> *viewControllers = [weakNavigationController.viewControllers subarrayWithRange:NSMakeRange(0, [weakNavigationController.viewControllers indexOfObject:appearingViewController] + 1)];
+                                        for (UIViewController *vc in viewControllers) {
+                                            if (vc.hidesBottomBarWhenPushed) {
+                                                systemShouldHideTabBar = YES;
+                                            }
+                                        }
+                                        if (!systemShouldHideTabBar) {
+                                            [weakNavigationController qmui_bindBOOL:YES forKey:kShouldCheckTabBarHiddenKey];
+                                        }
+                                    }
+                                }
+                                    break;
+                                case QMUINavigationActionDidPop:
+                                case QMUINavigationActionDidSet: {
+                                    [weakNavigationController qmui_bindBOOL:NO forKey:kShouldCheckTabBarHiddenKey];
+                                }
+                                    break;
+                                    
+                                default:
+                                    break;
+                            }
+                        }];
+                    };
+                });
+                
+                OverrideImplementation([UINavigationController class], NSSelectorFromString(@"_shouldBottomBarBeHidden"), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
+                    return ^BOOL(UINavigationController *selfObject) {
+                        // call super
+                        BOOL (*originSelectorIMP)(id, SEL);
+                        originSelectorIMP = (BOOL (*)(id, SEL))originalIMPProvider();
+                        BOOL result = originSelectorIMP(selfObject, originCMD);
+                        
+                        if ([selfObject qmui_getBoundBOOLForKey:kShouldCheckTabBarHiddenKey]) {
+                            result = NO;
+                        }
+                        return result;
+                    };
+                });
+            }
         }
         
         
         // 以下是将 iOS 12 修改 UITabBar 样式的接口转换成用 iOS 13 的新接口去设置（因为新旧方法是互斥的，所以统一在新系统都用新方法）
         // 但这样有个风险，因为 QMUIConfiguration 配置表里都是用 appearance 的方式去设置 standardAppearance，所以如果在 UITabBar 实例被添加到 window 之前修改过旧版任意一个样式接口，就会导致一个新的 UITabBarAppearance 对象被设置给 standardAppearance 属性，这样系统就会认为你这个 UITabBar 实例自定义了 standardAppearance，那么当它被 moveToWindow 时就不会自动应用 appearance 的值了，因此需要保证在添加到 window 前不要自行修改属性
-#ifdef IOS13_SDK_ALLOWED
         if (@available(iOS 13.0, *)) {
             
             void (^syncAppearance)(UITabBar *, void(^barActionBlock)(UITabBarAppearance *appearance), void (^itemActionBlock)(UITabBarItemAppearance *itemAppearance)) = ^void(UITabBar *tabBar, void(^barActionBlock)(UITabBarAppearance *appearance), void (^itemActionBlock)(UITabBarItemAppearance *itemAppearance)) {
@@ -253,7 +421,6 @@ QMUISynthesizeNSIntegerProperty(tabBarItemViewTouchCount, setTabBarItemViewTouch
                 }, nil);
             });
         }
-#endif
     });
 }
 
@@ -314,8 +481,6 @@ QMUISynthesizeNSIntegerProperty(tabBarItemViewTouchCount, setTabBarItemViewTouch
 
 @end
 
-#ifdef IOS13_SDK_ALLOWED
-
 @implementation UITabBarAppearance (QMUI)
 
 - (void)qmui_applyItemAppearanceWithBlock:(void (^)(UITabBarItemAppearance * _Nonnull))block {
@@ -325,5 +490,3 @@ QMUISynthesizeNSIntegerProperty(tabBarItemViewTouchCount, setTabBarItemViewTouch
 }
 
 @end
-
-#endif

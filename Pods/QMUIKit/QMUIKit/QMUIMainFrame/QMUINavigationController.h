@@ -18,11 +18,7 @@
 
 @interface QMUINavigationController : UINavigationController
 
-/**
- *  初始化时调用的方法，会在 initWithNibName:bundle: 和 initWithCoder: 这两个指定的初始化方法中被调用，所以子类如果需要同时支持两个初始化方法，则建议把初始化时要做的事情放到这个方法里。否则仅需重写要支持的那个初始化方法即可。
- */
-- (void)didInitialize NS_REQUIRES_SUPER;
-
+- (void)didInitialize DEPRECATED_MSG_ATTRIBUTE("使用 qmui_didInitialize 代替");
 @end
 
 @interface QMUINavigationController (UISubclassingHooks)
@@ -76,7 +72,9 @@
  *  3. popToRootViewControllerAnimated:
  *  4. setViewControllers:animated:
  *
- *  @warning 此时 self 已经不在 viewControllers 数组内
+ *  此时 self.navigationController 仍有值，但 self 已经不在 viewControllers 数组内。
+ *
+ *  @warning 这个方法被调用并不意味着 self 最终一定会被 pop 掉，例如手势返回被触发时就会调用这个方法，但如果中途取消手势，self 依然会回到 viewControllers 内。
  */
 - (void)didPopInNavigationControllerWithAnimated:(BOOL)animated;
 
@@ -141,6 +139,12 @@
  *  @see 配置表有开关 AutomaticCustomNavigationBarTransitionStyle 支持自动判断样式，无需实现这个方法
  */
 - (nullable NSString *)customNavigationBarTransitionKey;
+
+/**
+ *  在实现了系统的自定义转场情况下，导航栏转场的时候是否需要使用 QMUI 自定义的 push / pop transition 效果，默认不实现的话则不会使用，只要前后其中一个 vc 实现并返回了 YES 则会使用。
+ *  @see UINavigationController+NavigationBarTransition.h
+ */
+- (BOOL)shouldCustomizeNavigationBarTransitionIfUsingCustomTransitionForOperation:(UINavigationControllerOperation)operation fromViewController:(nullable UIViewController *)fromVC toViewController:(nullable UIViewController *)toVc;
 
 /**
  *  自定义navBar效果过程中UINavigationController的containerView的背景色

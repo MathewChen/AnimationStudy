@@ -24,6 +24,7 @@
 #import "UIView+QMUI.h"
 #import "NSString+QMUI.h"
 #import "UINavigationController+QMUI.h"
+#import "UINavigationItem+QMUI.h"
 
 typedef NS_ENUM(NSInteger, QMUINavigationButtonPosition) {
     QMUINavigationButtonPositionNone = -1,  // 不处于navigationBar最左（右）边的按钮，则使用None。用None则不会在alignmentRectInsets里调整位置
@@ -109,7 +110,7 @@ typedef NS_ENUM(NSInteger, QMUINavigationButtonPosition) {
         }
             break;
         case QMUINavigationButtonTypeBack: {
-            UIImage *backIndicatorImage = [UINavigationBar appearance].backIndicatorImage;
+            UIImage *backIndicatorImage = UINavigationBar.qmui_appearanceConfigured.backIndicatorImage;
             if (!backIndicatorImage) {
                 // 配置表没有自定义的图片，则按照系统的返回按钮图片样式创建一张，颜色按照 tintColor 来
                 UIColor *tintColor = QMUICMIActivated ? NavBarTintColor : UIColor.qmui_systemTintColor;
@@ -324,7 +325,6 @@ typedef NS_ENUM(NSInteger, QMUINavigationButtonPosition) {
 
 @interface UINavigationItem (QMUINavigationButton)
 
-@property(nonatomic, weak, readonly) UINavigationBar *qmui_navigationBar;
 @property(nonatomic, copy) NSArray<UIBarButtonItem *> *tempLeftBarButtonItems;
 @property(nonatomic, copy) NSArray<UIBarButtonItem *> *tempRightBarButtonItems;
 @end
@@ -502,14 +502,6 @@ QMUISynthesizeIdCopyProperty(tempRightBarButtonItems, setTempRightBarButtonItems
     return [self qmui_rightBarButtonItems];
 }
 
-- (UINavigationBar *)qmui_navigationBar {
-    // UINavigationItem 内部有个方法可以获取 navigationBar
-    if ([self respondsToSelector:@selector(navigationBar)]) {
-        return [self performSelector:@selector(navigationBar)];
-    }
-    return nil;
-}
-
 @end
 
 @implementation UIViewController (QMUINavigationButton)
@@ -532,10 +524,8 @@ QMUISynthesizeIdCopyProperty(tempRightBarButtonItems, setTempRightBarButtonItems
         OverrideImplementation([UIViewController class], @selector(accessibilityPerformEscape), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
             return ^BOOL(UIViewController *selfObject) {
                 
-                QMUINavigationButton *backButton = selfObject.navigationItem.leftBarButtonItem.customView;
-                if ([backButton isKindOfClass:QMUINavigationButton.class]
-                    && backButton.type == QMUINavigationButtonTypeBack
-                    && backButton.enabled
+                if (selfObject.navigationItem.leftBarButtonItem.qmui_isCustomizedBackBarButtonItem
+                    && ((QMUINavigationButton *)selfObject.navigationItem.leftBarButtonItem.customView).enabled
                     && selfObject.navigationController.qmui_rootViewController != selfObject
                     && selfObject.navigationController.interactivePopGestureRecognizer.enabled
                     && !UIApplication.sharedApplication.ignoringInteractionEvents) {

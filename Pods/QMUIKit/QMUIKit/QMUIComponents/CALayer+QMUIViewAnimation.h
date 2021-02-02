@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
  } completion:nil];
  @endcode
  */
-@property(nonatomic, assign) BOOL qmui_viewAnimaitonEnabled;
+@property(nonatomic, assign) BOOL qmui_viewAnimationEnabled;
 
 @end
 

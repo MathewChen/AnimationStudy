@@ -117,6 +117,7 @@ static UIImage *disclosureIndicatorImageDark;
     QMUICMI.navBarAccessoryViewMarginLeft = 5;                                  // NavBarAccessoryViewMarginLeft : QMUINavigationTitleView 里右边 accessoryView 的左边距
     QMUICMI.navBarActivityIndicatorViewStyle = UIActivityIndicatorViewStyleMedium;// NavBarActivityIndicatorViewStyle : QMUINavigationTitleView 里左边 loading 的主题
     QMUICMI.navBarAccessoryViewTypeDisclosureIndicatorImage = [[UIImage qmui_imageWithShape:QMUIImageShapeTriangle size:CGSizeMake(8, 5) tintColor:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];     // NavBarAccessoryViewTypeDisclosureIndicatorImage : QMUINavigationTitleView 右边箭头的图片
+    QMUICMI.navBarContainerClasses = nil; // NavBarContainerClasses : NavigationBar 系列开关被用于 UIAppearance 时的生效范围（默认情况下除了用于 UIAppearance 外，还用于实现了 QMUINavigationControllerAppearanceDelegate 的 UIViewController），默认为 nil。当赋值为 nil 或者空数组时等效于 @[UINavigationController.class]，也即对所有 UINavigationBar 生效，包括系统的通讯录（ContactsUI.framework)、打印等。当值不为空时，获取 UINavigationBar 的 appearance 请使用 UINavigationBar.qmui_appearanceConfigured 方法代替系统的 UINavigationBar.appearance。请保证这个配置项先于其他任意 NavBar 配置项执行。
     
     #pragma mark - TabBar
     
@@ -129,6 +130,7 @@ static UIImage *disclosureIndicatorImageDark;
     QMUICMI.tabBarItemTitleColorSelected = UIColor.qd_tintColor;                                 // TabBarItemTitleColorSelected : 选中的 UITabBarItem 的标题颜色
     QMUICMI.tabBarItemImageColor = TabBarItemTitleColor;                                         // TabBarItemImageColor : UITabBarItem 未选中时的图片颜色
     QMUICMI.tabBarItemImageColorSelected = TabBarItemTitleColorSelected;                                 // TabBarItemImageColorSelected : UITabBarItem 选中时的图片颜色
+    QMUICMI.tabBarContainerClasses = nil; // TabBarContainerClasses : TabBar 系列开关的生效范围，默认为 nil，当赋值为 nil 或者空数组时等效于 @[UITabBarController.class]，也即对所有 UITabBar 生效。当值不为空时，获取 UITabBar 的 appearance 请使用 UITabBar.qmui_appearanceConfigured 方法代替系统的 UITabBar.appearance。请保证这个配置项先于其他任意 TabBar 配置项执行。
     
     #pragma mark - Toolbar
     
@@ -142,6 +144,8 @@ static UIImage *disclosureIndicatorImageDark;
     QMUICMI.toolBarShadowImageColor = UIColorSeparator;                                      // ToolBarShadowImageColor : UIToolbar 的 shadowImage 的颜色，会自动创建一张 1px 高的图片
     QMUICMI.toolBarStyle = UIBarStyleDefault;                                   // ToolBarStyle : UIToolbar 的 barStyle
     QMUICMI.toolBarButtonFont = UIFontMake(17);                                            // ToolBarButtonFont : QMUIToolbarButton 的字体
+    QMUICMI.toolBarContainerClasses = nil; // ToolBarContainerClasses : ToolBar 系列开关的生效范围，默认为 nil，当赋值为 nil 或者空数组时等效于 @[UINavigationController.class]，也即对所有 UIToolbar 生效。当值不为空时，获取 UIToolbar 的 appearance 请使用 UIToolbar.qmui_appearanceConfigured 方法代替系统的 UIToolbar.appearance。请保证这个配置项先于其他任意 ToolBar 配置项执行。
+    QMUICMI.tabBarItemTitleFontSelected = nil; // TabBarItemTitleFontSelected : 选中的 UITabBarItem 的标题字体
     
     #pragma mark - SearchBar
     
@@ -250,7 +254,6 @@ static UIImage *disclosureIndicatorImageDark;
     QMUICMI.preventConcurrentNavigationControllerTransitions = YES;             // PreventConcurrentNavigationControllerTransitions : 自动保护 QMUINavigationController 在上一次 push/pop 尚未结束的时候就进行下一次 push/pop 的行为，避免产生 crash
     QMUICMI.navigationBarHiddenInitially = NO;                                  // NavigationBarHiddenInitially : QMUINavigationControllerDelegate preferredNavigationBarHidden 的初始值，默认为NO
     QMUICMI.shouldFixTabBarTransitionBugInIPhoneX = NO;                         // ShouldFixTabBarTransitionBugInIPhoneX : 是否需要自动修复 iOS 11 下，iPhone X 的设备在 push 界面时，tabBar 会瞬间往上跳的 bug
-    QMUICMI.shouldFixTabBarButtonBugForAll = NO;                                // ShouldFixTabBarButtonBugForAll : 是否要对 iOS 12.1.1 及以后的版本也修复手势返回时 tabBarButton 布局错误的 bug(issue #410)，默认为 NO
 //    QMUICMI.shouldFixTabBarSafeAreaInsetsBugForNotchedScreen = NO;              // ShouldFixTabBarSafeAreaInsetsBugForNotchedScreen : 是否要对 iOS 11 及以后的版本修复全面屏设备下 pop 界面时 UIScrollView 的 inset 会跳动导致滚动位置受影响的 bug（issue #934），默认为 NO
     QMUICMI.shouldPrintQMUIWarnLogToConsole = IS_DEBUG;                         // ShouldPrintQMUIWarnLogToConsole : 是否在出现 QMUILogWarn 时自动把这些 log 以 QMUIConsole 的方式显示到设备屏幕上
     QMUICMI.sendAnalyticsToQMUITeam = YES;                                      // SendAnalyticsToQMUITeam : 是否允许在 DEBUG 模式下上报 Bundle Identifier 和 Display Name 给 QMUI 统计用
