@@ -56,7 +56,7 @@
     [barcodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(barcodeButton.mas_bottom).offset(32);
         make.left.equalTo(@32);
-        make.size.mas_equalTo(CGSizeMake(600, 200));
+        make.size.mas_equalTo(CGSizeMake(300, 100));
     }];
     self.barcodeImageView = barcodeImageView;
     
@@ -89,7 +89,7 @@
     
     //kBarcodeFormatCodabar --> 0123456789-:/.+abcd
     
-    NSString *codaStr = @"a0123456789-:/.+$a";
+    NSString *codaStr = @"12345678";
     [self.barcodeButton setTitle:codaStr forState:UIControlStateNormal];
     
     CGImageRef cgimg =  CGImageRetain([[self create:codaStr format:kBarcodeFormatCodabar] cgimage]);

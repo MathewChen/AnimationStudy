@@ -87,6 +87,7 @@
 		28AF3CE525834F1E001E91F3 /* DLPurchasingModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3CE425834F1E001E91F3 /* DLPurchasingModel.mm */; };
 		28AF3CEE25834F7A001E91F3 /* DLPurchasingVerifyTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3CED25834F7A001E91F3 /* DLPurchasingVerifyTool.mm */; };
 		28AF3D1B25870150001E91F3 /* MXSendMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF3D1A25870150001E91F3 /* MXSendMailVC.m */; };
+		28B2F4132600972400228B42 /* MXPinchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B2F4122600972400228B42 /* MXPinchVC.m */; };
 		28D0FE892599F47D00B3E8B1 /* UIAlertController+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D0FE882599F47D00B3E8B1 /* UIAlertController+Blocks.m */; };
 		28F1B252259055DD004EE495 /* MXBarcodeDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F1B251259055DD004EE495 /* MXBarcodeDemoVC.m */; };
 		28FBF8FC24B80B7D0069B8D5 /* CustomerBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBF8FB24B80B7D0069B8D5 /* CustomerBezierPath.m */; };
@@ -281,6 +282,8 @@
 		28AF3D0E2583646C001E91F3 /* DLPurchasingModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLPurchasingModel+WCTTableCoding.h"; sourceTree = "<group>"; };
 		28AF3D1925870150001E91F3 /* MXSendMailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXSendMailVC.h; sourceTree = "<group>"; };
 		28AF3D1A25870150001E91F3 /* MXSendMailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXSendMailVC.m; sourceTree = "<group>"; };
+		28B2F4112600972400228B42 /* MXPinchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXPinchVC.h; sourceTree = "<group>"; };
+		28B2F4122600972400228B42 /* MXPinchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXPinchVC.m; sourceTree = "<group>"; };
 		28D0FE872599F47C00B3E8B1 /* UIAlertController+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Blocks.h"; path = "../../../DLabel3.6.0/DLabel/Common/Category/UIAlertController+Blocks.h"; sourceTree = "<group>"; };
 		28D0FE882599F47D00B3E8B1 /* UIAlertController+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Blocks.m"; path = "../../../DLabel3.6.0/DLabel/Common/Category/UIAlertController+Blocks.m"; sourceTree = "<group>"; };
 		28F1B250259055DD004EE495 /* MXBarcodeDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXBarcodeDemoVC.h; sourceTree = "<group>"; };
@@ -576,6 +579,8 @@
 				28979F8925BA7A2800874846 /* MXYYTextTestVC.m */,
 				28979F8E25BACFB800874846 /* MXTableViewTestVC.h */,
 				28979F8F25BACFB800874846 /* MXTableViewTestVC.m */,
+				28B2F4112600972400228B42 /* MXPinchVC.h */,
+				28B2F4122600972400228B42 /* MXPinchVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -953,6 +958,7 @@
 				285F33042445D9A500522F6F /* UICollectionViewCell+Extension.m in Sources */,
 				2879E33F2480BE1700AEFE35 /* QMUIConfigurationTemplateDark.m in Sources */,
 				289C9925247BE89B0093A5AD /* MXUIHelper.m in Sources */,
+				28B2F4132600972400228B42 /* MXPinchVC.m in Sources */,
 				2879E33E2480BE1700AEFE35 /* QMUIConfigurationTemplatePinkRose.m in Sources */,
 				28AF3CEE25834F7A001E91F3 /* DLPurchasingVerifyTool.mm in Sources */,
 				285F32FF2445D9A500522F6F /* UIAlertController+Blocks.m in Sources */,
