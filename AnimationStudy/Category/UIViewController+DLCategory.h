@@ -3,7 +3,7 @@
 //  DLabel
 //
 //  Created by 唐伟明 on 2019/10/11.
-//  Copyright © 2019 dudian. All rights reserved.
+//  Copyright © 2019 Star. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

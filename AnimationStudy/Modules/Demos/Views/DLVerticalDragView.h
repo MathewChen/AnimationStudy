@@ -3,7 +3,7 @@
 //  AnimationStudy
 //
 //  Created by mingxing on 2020/9/30.
-//  Copyright © 2020 dudian. All rights reserved.
+//  Copyright © 2020 Star. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

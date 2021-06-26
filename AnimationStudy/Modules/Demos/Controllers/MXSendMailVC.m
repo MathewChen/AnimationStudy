@@ -3,7 +3,7 @@
 //  AnimationStudy
 //
 //  Created by mingxing on 2020/12/14.
-//  Copyright © 2020 dudian. All rights reserved.
+//  Copyright © 2020 Star. All rights reserved.
 //  绑定邮箱必须是开启 IMAP/SMTP服务 的邮箱
 //  然后用授权码作为密码来登录
 

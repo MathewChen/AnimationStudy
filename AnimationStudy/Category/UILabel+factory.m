@@ -3,7 +3,7 @@
 //  DLabel
 //
 //  Created by 唐伟明 on 2019/6/14.
-//  Copyright © 2019 Dudian. All rights reserved.
+//  Copyright © 2019 Star. All rights reserved.
 //
 
 #import "UILabel+factory.h"

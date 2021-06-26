@@ -3,7 +3,7 @@
 //  AnimationStudy
 //
 //  Created by mingxing on 2021/1/22.
-//  Copyright © 2021 dudian. All rights reserved.
+//  Copyright © 2021 Star. All rights reserved.
 //
 
 #import "MXCommonViewController.h"

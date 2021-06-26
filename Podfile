@@ -23,6 +23,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
  #多页面嵌套
  pod 'JXCategoryView', '1.5.5'
+ #多页面嵌套
+ pod 'JXPagingView/Pager', '2.1.0'
  #Block
  pod 'BlocksKit', '2.2.5'
  #链式响应式编程

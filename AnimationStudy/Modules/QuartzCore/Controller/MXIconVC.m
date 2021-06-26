@@ -3,7 +3,7 @@
 //  AnimationStudy
 //
 //  Created by mingxing on 2020/7/10.
-//  Copyright © 2020 dudian. All rights reserved.
+//  Copyright © 2020 Star. All rights reserved.
 //
 
 #import "MXIconVC.h"
